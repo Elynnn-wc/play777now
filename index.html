@@ -19,6 +19,7 @@
       overflow: hidden;
       background: #000;
       color: #fff;
+      cursor: pointer;
     }
     video#bg-video {
       position: fixed;
@@ -98,15 +99,34 @@
   <video autoplay muted loop playsinline id="bg-video">
     <source src="https://cdn.pixabay.com/video/2024/01/29/198477-907598465_small.mp4" type="video/mp4">
   </video>
+
+  <!-- 背景音乐，初始不播放，等待点击触发 -->
+  <audio id="bg-music" loop>
+    <source src="https://github.com/Elynnn-wc/my-music/raw/refs/heads/main/Yunkui%20Summit.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <div class="overlay"></div>
   <div class="language-switch">中 / EN</div>
   <div class="content">
     <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=476,fit=crop,q=95/mv0J5WEbj8hgVW6P/livebet777_logo-A1a51POD6MszgRX4.png" alt="LiveBet777 Logo" class="logo">
     <h1>LiveBet777 Official Platform</h1>
     <p>全新上线 · 热门游戏 · 免费试玩 · 无需下载<br>Explore hot games. Try free without download.</p>
-    <a href="https://livebet-landing.pages.dev" class="cta-button">
+    <a href="https://livebet777.pages.dev" class="cta-button">
       立即进入 / Enter Now
     </a>
   </div>
+
+  <!-- 点击任意地方触发音乐播放 -->
+  <script>
+    let hasPlayed = false;
+    document.body.addEventListener('click', function () {
+      if (!hasPlayed) {
+        const music = document.getElementById('bg-music');
+        music.play().catch(e => console.log("Autoplay blocked:", e));
+        hasPlayed = true;
+      }
+    });
+  </script>
 </body>
 </html>

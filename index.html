@@ -71,25 +71,6 @@
       to { transform: translateY(-10%); }
     }
 
-    .hud-circle {
-      position: fixed;
-      bottom: 50%;
-      right: 50%;
-      transform: translate(50%, 50%);
-      width: 300px;
-      height: 300px;
-      border: 2px dashed rgba(200, 0, 255, 0.3);
-      border-radius: 50%;
-      animation: rotateHud 20s linear infinite;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    @keyframes rotateHud {
-      from { transform: translate(50%, 50%) rotate(0deg); }
-      to { transform: translate(50%, 50%) rotate(360deg); }
-    }
-
     .content {
       position: relative;
       z-index: 2;
@@ -172,7 +153,6 @@
   </video>
 
   <div class="electric-layer"></div>
-  <div class="hud-circle"></div>
   <div class="overlay"></div>
 
   <audio id="bg-music" loop>
@@ -186,6 +166,8 @@
     <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=476,fit=crop,q=95/mv0J5WEbj8hgVW6P/livebet777_logo-A1a51POD6MszgRX4.png" alt="LiveBet777 Logo" class="logo">
     <h1>LiveBet777 Official Platform</h1>
     <p>全新上线 · 热门游戏 · 免费试玩 · 无需下载<br>Explore hot games. Try free without download.</p>
+
+    <!-- GTM trackable button -->
     <a href="https://livebet777.pages.dev" class="cta-button">
       立即进入 / Enter Now
     </a>

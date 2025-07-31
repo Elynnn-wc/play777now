@@ -15,6 +15,25 @@
   </script>
   <!-- End Google Tag Manager -->
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1060869642340085'); // 替换为你的Pixel ID
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=你的PixelID&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet" />
   <style>
@@ -167,8 +186,8 @@
     <h1>LiveBet777 Official Platform</h1>
     <p>全新上线 · 热门游戏 · 免费试玩 · 无需下载<br>Explore hot games. Try free without download.</p>
 
-    <!-- GTM trackable button -->
-    <a href="https://golive777.elynnn598.workers.dev" class="cta-button">
+    <!-- CTA button with tracking -->
+    <a href="#" class="cta-button" id="enter-now">
       立即进入 / Enter Now
     </a>
   </div>
@@ -181,6 +200,39 @@
         music.play().catch(e => console.log("Autoplay blocked:", e));
         hasPlayed = true;
       }
+    });
+
+    // Button click event for fbq and CAPI
+    document.getElementById("enter-now").addEventListener("click", function(e) {
+      e.preventDefault();
+
+      if (typeof fbq !== "undefined") {
+        fbq('track', 'Lead');
+      }
+
+      fetch("https://facebook-capi.onrender.com/send-capi", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X_API_KEY": "10Ng10!!"
+        },
+        body: JSON.stringify({
+          eventName: "Lead",
+          email: "test@example.com",
+          phone: "1234567890",
+          value: 0,
+          currency: "SGD"
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("✅ Facebook response:", data);
+        window.location.href = "https://golive777.elynnn598.workers.dev";
+      })
+      .catch(err => {
+        console.error("❌ CAPI error:", err);
+        window.location.href = "https://golive777.elynnn598.workers.dev";
+      });
     });
   </script>
 </body>

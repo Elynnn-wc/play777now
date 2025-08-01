@@ -193,6 +193,11 @@
   </div>
 
   <script>
+    function getCookie(name) {
+     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+     return match ? match[2] : '';
+      }
+    
     let hasPlayed = false;
     document.body.addEventListener('click', function () {
       if (!hasPlayed) {
@@ -201,7 +206,7 @@
         hasPlayed = true;
       }
     });
-
+    
     // Button click event for fbq and CAPI
     document.getElementById("enter-now").addEventListener("click", function(e) {
       e.preventDefault();
@@ -214,7 +219,8 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X_API_KEY": "10Ng10!!"
+          "X_API_KEY": "10Ng10!!"，
+          'x-fbc': getCookie('_fbc') || '',
         },
         body: JSON.stringify({
           eventName: "Lead",
@@ -223,6 +229,7 @@
           value: 0,
           currency: "SGD"
         })
+        
       })
       .then(res => res.json())
       .then(data => {
